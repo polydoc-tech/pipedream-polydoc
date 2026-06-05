@@ -1,0 +1,22 @@
+{
+  "name": "pipedream-polydoc",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "PolyDoc connector for Pipedream: HTML/URL to PDF, screenshots, and EU e-invoices (Factur-X / ZUGFeRD). Source of truth for the components/polydoc registry component.",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run test/integration.test.mjs",
+    "lint": "eslint --ext .mjs,.js,.cjs components/polydoc",
+    "lint:fix": "eslint --ext .mjs,.js,.cjs components/polydoc --fix",
+    "scrub:check": "grep -rn $'\\u2014' components README.md examples && echo 'em-dash found' && exit 1 || echo 'no em-dash'"
+  },
+  "devDependencies": {
+    "@pipedream/eslint-plugin-pipedream": "^0.3.0",
+    "@pipedream/platform": "^3.4.0",
+    "eslint": "^8.57.0",
+    "vitest": "^3.2.0"
+  }
+}
