@@ -241,7 +241,7 @@ export default {
   },
   methods: {
     _baseUrl() {
-      return (this.$auth.base_url || DEFAULT_BASE_URL).replace(/\/+$/, "");
+      return DEFAULT_BASE_URL.replace(/\/+$/, "");
     },
     _headers(extra = {}) {
       return {

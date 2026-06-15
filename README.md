@@ -38,10 +38,8 @@ for screenshots only).
 The PolyDoc app authenticates with an API key (create one at
 [dashboard.polydoc.tech](https://dashboard.polydoc.tech)). The connected account
 also carries a `Sandbox` toggle (higher quota, watermarked output, sent as the
-`X-Sandbox` header) and a `Base URL` (default `https://api.polydoc.tech`, change
-only for self-hosted or staging). Run the **Test Connection** action to confirm a
-key works; it uses a tiny forced-sandbox screenshot so it never spends production
-quota.
+`X-Sandbox` header). Run the **Test Connection** action to confirm a key works; it
+uses a tiny forced-sandbox screenshot so it never spends production quota.
 
 ## Example workflows
 
