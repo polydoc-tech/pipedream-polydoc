@@ -58,6 +58,13 @@ test + lint gates are all in place and green.
 - [x] Renamed the registry PR title to "Add PolyDoc app with PDF, screenshot, and
   e-invoice actions". Fork PR branch updated (commit `dbebf44`); source repo main at
   `bdefeda`.
+- [x] Second CodeRabbit pass (triggered by `dbebf44`) re-flagged only the four `try/catch`
+  threads as "duplicate" (the one point we keep by design); the other three are
+  auto-marked addressed. Replied on all seven threads (kept-by-design rationale on the
+  four `try/catch`, `dbebf44` confirmation on the three fixed) and filled in the PR
+  template checklist, so the pre-merge Description check now has the versioning and
+  CodeRabbit boxes ticked. The "app already integrated" box stays unchecked: it can only
+  become true once Pipedream provisions the `polydoc` app auth.
 
 ## Out of scope this pass (follow-ups, need external coordination)
 
