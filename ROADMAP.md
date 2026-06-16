@@ -70,7 +70,11 @@ test + lint gates are all in place and green.
 
 - Pipedream must provision the `polydoc` app auth (api_key secret + sandbox boolean +
   the connect-time test request) before the components are testable end to end and the
-  PR can merge. Flagged in the PR body; may need a `#contribute` Slack/Discourse ping.
+  PR can merge. Flagged in the PR body. A maintainer (`GTFalcao`) is the requested
+  reviewer and the bot confirmed the PR is on their backlog ("team has been notified"),
+  so the intake already happened through the PR. No separate app-integration-request
+  issue and no `#contribute` ping needed: if the auth step blocks the review, raise it
+  directly with the reviewer on the PR thread. Otherwise wait for the review.
 - Publish three shareable Pipedream workflow templates in the UI (scheduled URL
   screenshot, invoice PDF from template, e-invoice via webhook), mirroring the n8n
   template trio. These are account-bound UI artifacts, not committed files.
