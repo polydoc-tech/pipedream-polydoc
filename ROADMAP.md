@@ -55,7 +55,9 @@ test + lint gates are all in place and green.
   arraybuffer error body so users see PolyDoc's message, not raw bytes), now documented
   with a why-comment. This is the one CodeRabbit point we did not "fix" as suggested,
   by design.
-- [ ] Rename the registry PR title to something specific (pending on the fork push).
+- [x] Renamed the registry PR title to "Add PolyDoc app with PDF, screenshot, and
+  e-invoice actions". Fork PR branch updated (commit `dbebf44`); source repo main at
+  `bdefeda`.
 
 ## Out of scope this pass (follow-ups, need external coordination)
 
