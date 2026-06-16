@@ -31,13 +31,37 @@ test + lint gates are all in place and green.
 - `npm run lint`: 0 errors, 23 advisory `default-value` warnings (conditional props
   with no sensible default).
 
+## Distribution (done)
+
+- [x] Source repo pushed to `polydoc-tech/pipedream-polydoc` (default branch `main`).
+- [x] Registry PR opened: **PipedreamHQ/pipedream#21180** (`add-polydoc-app` branch
+  on the `polydoc-tech` fork). Added via the Git Data API rather than a clone, since
+  the monorepo is ~685 MB. Commit authored as `PolyDoc <hello@polydoc.tech>`.
+- [x] Auth simplified: `base_url` dropped (host is fixed to `https://api.polydoc.tech`).
+  The Pipedream app needs only `api_key` (secret) + `sandbox` (boolean).
+
+### Review feedback addressed (CodeRabbit automated review, 7 findings + 2 checks)
+
+- [x] `syncDir` prop (`type: "dir"`, `accessMode: "write"`, `sync: true`) added to the
+  three file-writing actions; `output.mjs` writes to `process.env.STASH_DIR || "/tmp"`
+  so Pipedream syncs the returned file path.
+- [x] `readOnlyHint` set to `false` on the test-connection action (it invokes a
+  conversion endpoint, so it is not a pure read).
+- [x] Inline JSON examples added to the `templateData`, `webhookOptions`, and `invoice`
+  object prop descriptions.
+- [x] Docstrings added across the app methods and the builder/params helpers to clear
+  the 80% docstring-coverage check.
+- [x] Kept the `_request` `try/catch` + `extractApiErrorMessage` (decodes the
+  arraybuffer error body so users see PolyDoc's message, not raw bytes), now documented
+  with a why-comment. This is the one CodeRabbit point we did not "fix" as suggested,
+  by design.
+- [ ] Rename the registry PR title to something specific (pending on the fork push).
+
 ## Out of scope this pass (follow-ups, need external coordination)
 
-- Register the `polydoc` custom app on Pipedream's platform (api_key / sandbox /
-  base_url auth + connect-time test request). Until then `this.$auth.*` only
-  resolves once Pipedream provisions the app; local tests exercise the builder and
-  action glue directly.
-- Push the repo to `polydoc-tech` and open the `PipedreamHQ/pipedream` registry PR.
+- Pipedream must provision the `polydoc` app auth (api_key secret + sandbox boolean +
+  the connect-time test request) before the components are testable end to end and the
+  PR can merge. Flagged in the PR body; may need a `#contribute` Slack/Discourse ping.
 - Publish three shareable Pipedream workflow templates in the UI (scheduled URL
   screenshot, invoice PDF from template, e-invoice via webhook), mirroring the n8n
   template trio. These are account-bound UI artifacts, not committed files.
