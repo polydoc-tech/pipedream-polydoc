@@ -92,7 +92,7 @@ export default {
     advanced: {
       type: "object",
       label: "Advanced (JSON)",
-      description: "Raw object deep-merged into the request body for any API field not exposed above (for example `pdf.watermark`, `pdf.pdfa`, `pdf.ua`, `render`, `request`). Advanced values win on conflict.",
+      description: "Raw object deep-merged into the request body for any API field not exposed above (for example `pdf.watermark`, `pdf.pdfa`, `pdf.pdfua`, `render`, `request`). Advanced values win on conflict.",
       optional: true,
     },
     format: {
