@@ -4,6 +4,22 @@ PolyDoc connector for Pipedream, porting `n8n-nodes-polydoc` per
 `../../CONNECTOR-PLAYBOOK.md`. The component lives under `components/polydoc/`,
 laid out copy-paste-ready into the `PipedreamHQ/pipedream` registry.
 
+## Status 2026-07-08
+
+- **Registry PR #21180 MERGED 2026-06-27** (`c49e5f67`). The connector is live in the public
+  Pipedream registry. Reviewers rewrote `package.json` (name `@pipedream/polydoc`, version
+  `0.1.0`, author Pipedream, homepage pipedream.com) and reformatted two action files.
+- **Bug found post-merge + follow-up PR open:** the Pipedream UI passes object-typed props
+  (invoice, templateData, webhookOptions, advanced) as JSON strings, which the actions
+  forwarded verbatim, so the API 400'd (`eInvoice.invoice must be object`). Fixed with
+  `coerceObject()` in `common/params.mjs` + field-level error surfacing in
+  `common/output.mjs`; actions bumped to `0.0.2`, package to `0.1.1`. Submitted as
+  **PipedreamHQ/pipedream#21346** (fork branch `polydoc-tech/pipedream:fix-object-prop-json-coercion`).
+  Unit tests: `test/params.test.mjs`, `test/output.test.mjs`.
+- Docs guide (`polydoc-web`) rewritten native-first; screenshots pending. Do not deploy the
+  guide's e-invoice / template-data UI flow until #21346 merges (until then the public 0.0.1
+  errors on those object fields).
+
 ## Done
 
 Initial build pass complete and verified locally: the `polydoc` app, the pure body
