@@ -36,10 +36,13 @@ for screenshots only).
 ## Credentials
 
 The PolyDoc app authenticates with an API key (create one at
-[dashboard.polydoc.tech](https://dashboard.polydoc.tech)). The connected account
-also carries a `Sandbox` toggle (higher quota, watermarked output, sent as the
-`X-Sandbox` header). Run the **Test Connection** action to confirm a key works; it
-uses a tiny forced-sandbox screenshot so it never spends production quota.
+[dashboard.polydoc.tech](https://dashboard.polydoc.tech)). Run the **Test
+Connection** action to confirm a key works; it uses a tiny forced-sandbox
+screenshot so it never spends production quota.
+
+Each conversion action has a `Sandbox` toggle (off by default). Turn it on to send
+that run to the sandbox (`X-Sandbox: true`): watermarked output that does not spend
+production quota, handy while building a workflow.
 
 ## Example workflows
 
