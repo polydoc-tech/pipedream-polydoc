@@ -250,3 +250,83 @@ describe("test-connection action", () => {
     });
   });
 });
+
+describe("sandbox toggle", () => {
+  it("convert-pdf forwards sandbox: true to _request", async () => {
+    const {
+      ctx, calls,
+    } = makeCtx({
+      sourceType: "url",
+      url: "https://example.com",
+      deliveryMode: "download",
+      sandbox: true,
+    }, PDF_RESPONSE);
+
+    await convertPdf.run.call(ctx, {
+      $,
+    });
+
+    expect(calls[0].sandbox).toBe(true);
+  });
+
+  it("convert-pdf leaves sandbox off when the prop is unset", async () => {
+    const {
+      ctx, calls,
+    } = makeCtx({
+      sourceType: "url",
+      url: "https://example.com",
+      deliveryMode: "download",
+    }, PDF_RESPONSE);
+
+    await convertPdf.run.call(ctx, {
+      $,
+    });
+
+    expect(calls[0].sandbox).toBeFalsy();
+  });
+
+  it("convert-screenshot forwards the sandbox flag", async () => {
+    const {
+      ctx, calls,
+    } = makeCtx({
+      sourceType: "url",
+      url: "https://example.com",
+      deliveryMode: "download",
+      imageType: "png",
+      sandbox: true,
+    }, {
+      headers: {
+        "content-type": "image/png",
+      },
+      data: Buffer.from("fake png bytes"),
+    });
+
+    await convertScreenshot.run.call(ctx, {
+      $,
+    });
+
+    expect(calls[0].sandbox).toBe(true);
+  });
+
+  it("generate-einvoice forwards the sandbox flag", async () => {
+    const {
+      ctx, calls,
+    } = makeCtx({
+      sourceType: "html",
+      html: "<h1>Invoice</h1>",
+      deliveryMode: "download",
+      eInvoiceStandard: "zugferd",
+      eInvoiceProfile: "en16931",
+      invoice: {
+        number: "INV-1",
+      },
+      sandbox: true,
+    }, PDF_RESPONSE);
+
+    await generateEinvoice.run.call(ctx, {
+      $,
+    });
+
+    expect(calls[0].sandbox).toBe(true);
+  });
+});

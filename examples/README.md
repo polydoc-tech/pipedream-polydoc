@@ -12,5 +12,5 @@ once the `polydoc` app is registered (see `../ROADMAP.md`).
 | PDF | [Invoice PDF from template data](./invoice-pdf-from-template.md) | Manual / Sheets / Webhook | Convert to PDF |
 | E-Invoice | [E-Invoice from a webhook](./einvoice-webhook-to-pdf.md) | HTTP / Webhook | Generate E-Invoice |
 
-Every example uses the connected PolyDoc account; turn on the account's Sandbox
+Every example uses the connected PolyDoc account; turn on the action's `Sandbox`
 toggle while testing to avoid spending production quota (output is watermarked).
