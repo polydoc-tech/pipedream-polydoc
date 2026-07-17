@@ -64,6 +64,13 @@ export default {
       description: "Conversion timeout in milliseconds. The free tier is capped at 30000.",
       optional: true,
     },
+    sandbox: {
+      type: "boolean",
+      label: "Sandbox",
+      description: "Run this conversion in sandbox mode: it does not consume production quota and the output is watermarked. Off by default.",
+      optional: true,
+      default: false,
+    },
     deliveryMode: {
       type: "string",
       label: "Delivery Mode",
@@ -245,29 +252,31 @@ export default {
       return DEFAULT_BASE_URL.replace(/\/+$/, "");
     },
     /**
-     * Request headers: JSON content type, Bearer auth, and the per-request
-     * X-Sandbox flag taken from the connected account.
+     * Base request headers: JSON content type and Bearer auth. Callers pass the
+     * per-request X-Sandbox flag through `extra`.
      */
     _headers(extra = {}) {
       return {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.$auth.api_key}`,
-        "X-Sandbox": this.$auth.sandbox ? "true" : "false",
         ...extra,
       };
     },
     /**
      * Authenticated POST to a PolyDoc endpoint. Returns the full response so the
      * caller can read binary bytes plus headers, or parse the JSON delivery
-     * confirmation. `X-Sandbox` is set per-request from the connected account.
+     * confirmation. `sandbox` sets the X-Sandbox header for this request.
      */
     async _request({
-      $, endpoint, body, isBinary = false, headers = {},
+      $, endpoint, body, isBinary = false, sandbox = false, headers = {},
     }) {
       const config = {
         method: "POST",
         url: `${this._baseUrl()}${endpoint}`,
-        headers: this._headers(headers),
+        headers: this._headers({
+          "X-Sandbox": sandbox ? "true" : "false",
+          ...headers,
+        }),
         data: body,
         returnFullResponse: true,
       };
@@ -292,9 +301,7 @@ export default {
           },
         },
         isBinary: true,
-        headers: {
-          "X-Sandbox": "true",
-        },
+        sandbox: true,
       });
     },
   },
