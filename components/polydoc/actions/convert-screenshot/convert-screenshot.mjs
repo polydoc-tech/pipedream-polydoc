@@ -110,6 +110,12 @@ export default {
         "timeout",
       ],
     },
+    sandbox: {
+      propDefinition: [
+        polydoc,
+        "sandbox",
+      ],
+    },
     deliveryMode: {
       propDefinition: [
         polydoc,
@@ -180,6 +186,7 @@ export default {
         endpoint,
         body,
         isBinary: effectiveBinary,
+        sandbox: this.sandbox,
       });
     } catch (error) {
       const message = extractApiErrorMessage(error);
