@@ -4,7 +4,7 @@ Three starter workflows, one per use-case angle, mirroring the n8n connector's
 template set. Pipedream workflows are built in the UI rather than imported from a
 file, so each example below lists the trigger, the PolyDoc action, and the props
 to set. The same three will be published as shareable Pipedream workflow templates
-once the `polydoc` app is registered (see `../ROADMAP.md`).
+once the `polydoc` app is registered.
 
 | Angle | Example | Trigger | Action |
 | --- | --- | --- | --- |
