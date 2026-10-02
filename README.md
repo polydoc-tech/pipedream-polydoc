@@ -82,7 +82,7 @@ a while on a cold sandbox; the test timeout is set generously.
   conditional props (URL vs HTML vs Template, delivery subfields). These are
   advisory; those props have no sensible default and are validated at runtime.
 - The `polydoc` app's API-key auth must be registered on Pipedream's platform
-  before the component can connect an account in the UI. See [ROADMAP.md](./ROADMAP.md).
+  before the component can connect an account in the UI.
 
 ## License
 

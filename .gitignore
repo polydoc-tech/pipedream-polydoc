@@ -3,6 +3,3 @@ node_modules/
 *.log
 coverage/
 .DS_Store
-
-# Internal dev roadmap - kept local, not published
-ROADMAP.md
