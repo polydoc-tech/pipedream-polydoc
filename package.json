@@ -5,6 +5,18 @@
   "type": "module",
   "license": "MIT",
   "description": "PolyDoc connector for Pipedream: HTML/URL to PDF, screenshots, and EU e-invoices (Factur-X / ZUGFeRD). Source of truth for the components/polydoc registry component.",
+  "homepage": "https://polydoc.tech",
+  "author": {
+    "name": "PolyDoc",
+    "email": "hello@polydoc.tech"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polydoc-tech/pipedream-polydoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/polydoc-tech/pipedream-polydoc/issues"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",

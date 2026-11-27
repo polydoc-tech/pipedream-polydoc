@@ -86,4 +86,4 @@ a while on a cold sandbox; the test timeout is set generously.
 
 ## License
 
-MIT
+[MIT](./LICENSE)
